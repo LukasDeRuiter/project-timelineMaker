@@ -1,0 +1,42 @@
+let barCounter = 1;
+const _containerHoldingBars = document.getElementById('containerHoldingBarsID');
+
+document.getElementById('newBarBtnID').addEventListener('click',function(){
+    barCounter += 1;
+    let newBar = document.createElement("div");
+    let newBarInputStartLabel = document.createElement("label");
+    let newBarInputStart = document.createElement("input");
+    let newBarInputEndLabel = document.createElement("label");
+    let newBarInputEnd = document.createElement("input");
+    let newBarInputColorLabel = document.createElement("label");
+    let newBarInputColor = document.createElement("input");
+    let newBarInputBtn = document.createElement("button");
+    newBar.classList.add("bar");
+    newBarInputStart.classList.add("inputYear");
+    newBarInputEnd.classList.add("inputYear");
+    newBarInputColor.classList.add("inputColor");
+    newBarInputBtn.classList.add("inputBtn");
+    newBarInputStart.setAttribute('type', 'number');
+    newBarInputEnd.setAttribute('type', 'number');
+    newBarInputColor.setAttribute('type', 'text');
+    newBarInputStartLabel.innerHTML = "What is the starting year of this period?";
+    newBarInputEndLabel.innerHTML = "What is the ending year of this period?";
+    newBarInputColorLabel.innerHTML = "What color would you like the bar to be?";
+    newBarInputBtn.innerHTML = "Add to canvas";
+    newBar.setAttribute('ID', `'bar${barCounter}'`);
+    newBarInputStart.setAttribute('ID', `startYear${barCounter}`);
+    newBarInputEnd.setAttribute('ID', `endYear${barCounter}`);
+    newBarInputColor.setAttribute('ID', `chosenColor${barCounter}`);
+    newBarInputBtn.setAttribute('ID', `addBtnID${barCounter}`);
+    newBarInputStartLabel.setAttribute('for', `barInputStart${barCounter}`);
+    newBarInputEndLabel.setAttribute('for', `barInputEnd${barCounter}`);
+    newBarInputColorLabel.setAttribute('for', `chosenColor${barCounter}`);
+    newBar.appendChild(newBarInputStartLabel);
+    newBar.appendChild(newBarInputStart);
+    newBar.appendChild(newBarInputEndLabel);
+    newBar.appendChild(newBarInputEnd);
+    newBar.appendChild(newBarInputColorLabel);
+    newBar.appendChild(newBarInputColor);
+    newBar.appendChild(newBarInputBtn);
+    _containerHoldingBars.appendChild(newBar);
+})
