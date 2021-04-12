@@ -1,0 +1,22 @@
+.barsContainer{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    background-color: black;
+    width: 700px;
+    margin-left: -350px;
+    height: 200px;
+    overflow-Y: scroll;
+  }
+  
+  .canvasContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    width: 700px;
+    margin-left: -350px;
+    height: 200px;
+    overflow-X: scroll;
+  }
+
