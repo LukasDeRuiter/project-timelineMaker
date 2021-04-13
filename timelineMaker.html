@@ -11,7 +11,7 @@
   <body>
     <div class="barsContainer">
       <div class="bars" id="containerHoldingBarsID">
-        <div class="bar">
+        <div class="bar" id="bar1ID">
           <label for="startYear1">What is the starting year of this period?</label>
           <input type="number" id="startYear1">
           <label for="endYear1">What is the ending year of this period?</label>
@@ -23,8 +23,11 @@
       </div>
       <div class="newBarBtn" id="newBarBtnID"><button>Add new bar</button></div>
     </div>
-    
+
+    <div class="buttonContainer" id="createCanvasBtnID"> <button>Create canvas</button></div>
+
     <div class="canvasContainer">
+      <canvas id="theTimelineCanvas"> </canvas>
     </div>
   </body>
   <script src="timelineMaker.js"></script>

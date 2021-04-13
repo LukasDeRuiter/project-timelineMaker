@@ -36,6 +36,21 @@
   .inputBtn{
 
   }
+
+
+  .buttonContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      background-color: black;
+      width: 700px;
+      margin-left: -350px;
+      height: 300px;
+      overflow-Y: scroll;
+    }
   
   .canvasContainer{
     position: absolute;
