@@ -1,16 +1,18 @@
 let barCounter = 1;
 let barArray = [];
 let lengthOfTheCanvas = [];
- /*  add array for colors  */
+let chosenColorArray = [];
 const _containerHoldingBars = document.getElementById('containerHoldingBarsID');
 
 document.getElementById('addBtnID1').addEventListener('click', function(){
     let newBar1 = document.getElementById('bar1ID');
+    let bar1Color = document.getElementById('chosenColor1');
     let barInputEnd1 = document.getElementById('endYear1');
     let barInputStart1 = document.getElementById('startYear1'); 
     let yearsInsideBar1 = barInputEnd1.value - barInputStart1.value;
     lengthOfTheCanvas.push(yearsInsideBar1);
     barArray.push(newBar1);
+    chosenColorArray.push(bar1Color.value);
     newBar1.style.display =  "none";
 })
 
@@ -44,6 +46,7 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
 
     newBarInputBtn.addEventListener('click', function(){
         barArray.push(newBar);
+        chosenColorArray.push(newBarInputColor.value);
         let yearsInsideBar = newBarInputEnd.value - newBarInputStart.value;
         lengthOfTheCanvas.push(yearsInsideBar);
         newBar.style.display =  "none";
@@ -65,6 +68,7 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
 document.getElementById('createCanvasBtnID').addEventListener('click', function(){
     console.log(barArray);
     console.log(lengthOfTheCanvas);
+    console.log(chosenColorArray);
 
     let canvas = document.getElementById('theTimelineCanvas');
     let ctx = canvas.getContext('2d');
@@ -74,9 +78,17 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
         sum += lengthOfTheCanvas[i];
     }
     console.log(sum);
-    canvas.width = `${sum * 10}`; 
+    canvas.width = `${sum * 12}`; 
 
-    /* make a for loop out of this   */
-    ctx.fillStyle = 'orange';
-    ctx.fillRect(0, 0, 50, 50);
+    let  sum2 = 0;
+    for(let i = 0; i < barArray.length; i++){
+    ctx.fillStyle = `${chosenColorArray[i]}`;
+    ctx.fillRect(`${sum2 * 10}`, 0, `${lengthOfTheCanvas[i] * 10}`, 50);
+    sum2 += lengthOfTheCanvas[i];
+    }
 })
+
+/*
+`${lengthOfTheCanvas[i] * 10}`
+chosenColorArray[i]
+*/
