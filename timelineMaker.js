@@ -69,9 +69,37 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
 })
 
 document.getElementById('createCanvasBtnID').addEventListener('click', function(){
-    console.log(barArray);
-    console.log(lengthOfTheCanvas);
-    console.log(chosenColorArray);
+    let barContainer = document.getElementById('bigBarContainerID');
+    barContainer.style.animation = "dissappear 2s 1";
+    barContainer.onanimationend = function (){
+        barContainer.style.display = "none";
+    }
+    let buttonContainer = document.getElementById('createCanvasBtnID');
+    let loadingContainer = document.getElementById('loadingContainerID');
+    buttonContainer.style.animation = "dissappear 2s 1";
+    buttonContainer.onanimationend = function (){
+        buttonContainer.style.display = "none";
+        loadingContainer.style.display = "flex";
+        loadingContainer.style.animation = "appear 2s 1";
+        loadingContainer.onanimationend = function(){
+        console.log('yes2');
+            let loadingBar = document.getElementById('loadingBar2ID');
+            loadingBar.style.animation = "animateLoadingBar 5s linear 1";
+            setTimeout(function (){
+                document.getElementById('loadingTextID').innerHTML = "Loading complete!"
+            }, 4000)
+            loadingBar.onanimationend = function (){
+                loadingContainer.style.animation = "dissappear 2s 1";
+                loadingContainer.onanimationend = function(){
+                    loadingContainer.style.display = "none";
+                    let theCanvas = document.getElementById('canvasContainerID');
+                    theCanvas.style.display = "flex";
+                    theCanvas.style.animation= "appear 1s 1";
+                }
+            }
+        }
+        
+    }
 
     let canvas = document.getElementById('theTimelineCanvas');
     let ctx = canvas.getContext('2d');
@@ -80,7 +108,6 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
     for(let i = 0; i < lengthOfTheCanvas.length; i++){
         sum += lengthOfTheCanvas[i];
     }
-    console.log(sum);
     canvas.width = `${sum * 12}`; 
 
     ctx.fillStyle = "black;";
@@ -97,8 +124,6 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
         ctx.font = "50px";
         ctx.strokeText(`${endYearsArray[i]}`, `${sum2 * 10}`, 10);    
 
-    console.log(`${endYearsArray[i]}`);
-    console.log(`${lengthOfTheCanvas[i] * 10}`);
     }
 })
 

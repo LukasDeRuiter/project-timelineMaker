@@ -9,7 +9,7 @@
 </head>
 
   <body>
-    <div class="barsContainer">
+    <div class="barsContainer" id="bigBarContainerID">
       <div class="bars" id="containerHoldingBarsID">
         <div class="bar" id="bar1ID">
           <label for="startYear1">What is the starting year of this period?</label>
@@ -26,7 +26,12 @@
 
     <div class="buttonContainer" id="createCanvasBtnID"> <button>Create canvas</button></div>
 
-    <div class="canvasContainer">
+    <div class="loadingContainer" id="loadingContainerID"><p class="loadingText" id="loadingTextID">Loading...</p>
+      <div class="loadingBar1" id="">
+        <div class="loadingBar2" id="loadingBar2ID"></div></div></div>
+
+
+    <div class="canvasContainer" id="canvasContainerID">
       <canvas id="theTimelineCanvas"> </canvas>
     </div>
   </body>
