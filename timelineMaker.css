@@ -97,9 +97,9 @@
 
 
   .buttonContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
       position: absolute;
       top: 45%;
       left: 50%;
@@ -107,8 +107,22 @@
       width: 700px;
       margin-left: -350px;
       height: 300px;
-      overflow-Y: scroll;
       border: 5px solid red;
+    }
+
+    .yearsToPixelsOption{
+      background-color: white;
+      grid-row-start: 1;
+      grid-row-end: 6;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+
+    .createBtn{
+      grid-row-start: 6;
+      grid-row-end: 7;
+      grid-column-start: 3;
+      grid-column-end: 4;
     }
   
   .canvasContainer{
@@ -117,8 +131,8 @@
     top: 40%;
     left: 50%;
     background-color: white;
-    width: 700px;
-    margin-left: -350px;
+    width: 1200px;
+    margin-left: -600px;
     height: 200px;
     overflow-X: scroll;
   }

@@ -3,6 +3,7 @@ let barArray = [];
 let lengthOfTheCanvas = [];
 let chosenColorArray = [];
 let endYearsArray = [];
+let pixelsPerYear = 10;
 const _containerHoldingBars = document.getElementById('containerHoldingBarsID');
 
 document.getElementById('addBtnID1').addEventListener('click', function(){
@@ -68,13 +69,30 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
     _containerHoldingBars.appendChild(newBar);
 })
 
+document.getElementById('10').addEventListener('click', function(){
+    pixelsPerYear = 10;
+    console.log(pixelsPerYear);
+});
+document.getElementById('20').addEventListener('click', function(){
+    pixelsPerYear = 20;
+    console.log(pixelsPerYear);
+});
+document.getElementById('40').addEventListener('click', function(){
+    pixelsPerYear = 40;
+    console.log(pixelsPerYear);
+});
+document.getElementById('80').addEventListener('click', function(){
+    pixelsPerYear = 80;
+    console.log(pixelsPerYear);
+});
+
 document.getElementById('createCanvasBtnID').addEventListener('click', function(){
     let barContainer = document.getElementById('bigBarContainerID');
     barContainer.style.animation = "dissappear 2s 1";
     barContainer.onanimationend = function (){
         barContainer.style.display = "none";
     }
-    let buttonContainer = document.getElementById('createCanvasBtnID');
+    let buttonContainer = document.getElementById('btnAndOptionsContainer');
     let loadingContainer = document.getElementById('loadingContainerID');
     buttonContainer.style.animation = "dissappear 2s 1";
     buttonContainer.onanimationend = function (){
@@ -108,21 +126,21 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
     for(let i = 0; i < lengthOfTheCanvas.length; i++){
         sum += lengthOfTheCanvas[i];
     }
-    canvas.width = `${sum * 12}`; 
+    canvas.width = `${40 + (sum * pixelsPerYear)}`; 
 
     ctx.fillStyle = "black;";
-    ctx.font = "50px";
-    ctx.strokeText(`${document.getElementById('startYear1').value}`, 0, 10);
+    ctx.font = "20px serif";
+    ctx.strokeText(`${document.getElementById('startYear1').value}`, 10, 25);
 
     console.log(document.getElementById('startYear1').value);
     let  sum2 = 0;
     for(let i = 0; i < barArray.length; i++){
         ctx.fillStyle = `${chosenColorArray[i]}`;
-        ctx.fillRect(`${sum2 * 10}`, 50, `${lengthOfTheCanvas[i] * 10}`, 50);
+        ctx.fillRect(`${20 + (sum2 * pixelsPerYear)}`, 50, `${lengthOfTheCanvas[i] * pixelsPerYear}`, 50);
         sum2 += lengthOfTheCanvas[i];
         ctx.fillStyle = "black;";
-        ctx.font = "50px";
-        ctx.strokeText(`${endYearsArray[i]}`, `${sum2 * 10}`, 10);    
+        ctx.font = "20px serif";
+        ctx.strokeText(`${endYearsArray[i]}`, `${(sum2 * pixelsPerYear)- 10}`, 25);    
 
     }
 })
