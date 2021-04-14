@@ -1,3 +1,7 @@
+:root{
+  background-color: black;
+}
+
 .barsContainer{
   display: flex;
   flex-direction: row;
@@ -6,10 +10,12 @@
     top: 10%;
     left: 50%;
     background-color: black;
-    width: 700px;
-    margin-left: -350px;
+    width: 900px;
+    margin-left: -450px;
     height: 300px;
-    overflow-Y: scroll;
+    overflow-X: scroll;
+    z-index: -2;
+    border: 5px solid red;
   }
 
   .bars{
@@ -19,11 +25,63 @@
 
   .bar{
     display: flex;
-    background-color: white;
+    position: relative;
+    background-color: rgb(212, 72, 22);
     flex-direction: column;
     width: 190px;
     height: 190px;
+    border: 2px solid rgb(145, 48, 13);
+    border-radius: 3px;
   }
+
+.bar::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -15px;
+  width: 60px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: green;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  z-index: -1;
+  border: 2px solid rgb(22, 212, 38);
+  box-shadow: 0 0 10px rgba(22, 212, 38, 0.80), 0 0 30px rgba(22, 212, 38, 0.80);
+  transition: 1s;
+}
+
+.bar:hover::before{
+ width: 170px;
+  box-shadow: 0 0 10px rgba(22, 212, 38, 0.80), 0 0 30px rgba(22, 212, 38, 0.80), 0 0 50px rgba(22, 212, 38, 0.80),  0 0 70px rgba(22, 212, 38, 0.80);
+  
+}
+
+.bar::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -15px;
+  width: 60px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: pink;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  z-index: -1;
+  border: 2px solid rgb(212, 22, 107);
+  box-shadow: 0 0 10px rgba(212, 22, 107, 0.80), 0 0 30px rgba(212, 22, 107, 0.80);
+  transition: 1s;
+}
+.bar:hover::after{
+ width: 170px;
+  box-shadow: 0 0 10px rgba(212, 22, 107, 0.80), 0 0 30px rgba(212, 22, 107, 0.80), 0 0 50px rgba(212, 22, 107, 0.80),  0 0 70px rgba(212, 22, 107, 0.80);
+  
+}
 
   .inputYear{
 
@@ -43,7 +101,7 @@
     flex-direction: row;
     align-items: center;
       position: absolute;
-      top: 80%;
+      top: 90%;
       left: 50%;
       background-color: black;
       width: 700px;
@@ -54,7 +112,7 @@
   
   .canvasContainer{
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     background-color: white;
     width: 700px;
