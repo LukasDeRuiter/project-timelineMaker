@@ -2,6 +2,7 @@ let barCounter = 1;
 let barArray = [];
 let lengthOfTheCanvas = [];
 let chosenColorArray = [];
+let endYearsArray = [];
 const _containerHoldingBars = document.getElementById('containerHoldingBarsID');
 
 document.getElementById('addBtnID1').addEventListener('click', function(){
@@ -13,6 +14,7 @@ document.getElementById('addBtnID1').addEventListener('click', function(){
     lengthOfTheCanvas.push(yearsInsideBar1);
     barArray.push(newBar1);
     chosenColorArray.push(bar1Color.value);
+    endYearsArray.push(barInputEnd1 .value);
     newBar1.style.display =  "none";
 })
 
@@ -49,6 +51,7 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
         chosenColorArray.push(newBarInputColor.value);
         let yearsInsideBar = newBarInputEnd.value - newBarInputStart.value;
         lengthOfTheCanvas.push(yearsInsideBar);
+        endYearsArray.push(newBarInputEnd.value);
         newBar.style.display =  "none";
 
     })
@@ -72,7 +75,7 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
 
     let canvas = document.getElementById('theTimelineCanvas');
     let ctx = canvas.getContext('2d');
-    canvas.height = "150";  
+    canvas.height = "100";  
     let  sum = 0;
     for(let i = 0; i < lengthOfTheCanvas.length; i++){
         sum += lengthOfTheCanvas[i];
@@ -80,11 +83,22 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
     console.log(sum);
     canvas.width = `${sum * 12}`; 
 
+    ctx.fillStyle = "black;";
+    ctx.font = "50px";
+    ctx.strokeText(`${document.getElementById('startYear1').value}`, 0, 10);
+
+    console.log(document.getElementById('startYear1').value);
     let  sum2 = 0;
     for(let i = 0; i < barArray.length; i++){
-    ctx.fillStyle = `${chosenColorArray[i]}`;
-    ctx.fillRect(`${sum2 * 10}`, 0, `${lengthOfTheCanvas[i] * 10}`, 50);
-    sum2 += lengthOfTheCanvas[i];
+        ctx.fillStyle = `${chosenColorArray[i]}`;
+        ctx.fillRect(`${sum2 * 10}`, 50, `${lengthOfTheCanvas[i] * 10}`, 50);
+        sum2 += lengthOfTheCanvas[i];
+        ctx.fillStyle = "black;";
+        ctx.font = "50px";
+        ctx.strokeText(`${endYearsArray[i]}`, `${sum2 * 10}`, 10);    
+
+    console.log(`${endYearsArray[i]}`);
+    console.log(`${lengthOfTheCanvas[i] * 10}`);
     }
 })
 
