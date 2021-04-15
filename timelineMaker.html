@@ -9,6 +9,9 @@
 </head>
 
   <body>
+    <div class="titleContainer" id="titleContainerID"><p>Welcome to the timeline-maker! <br> Choose how many bars you want below</p></div>
+    
+    ">
     <div class="barsContainer" id="bigBarContainerID">
       <div class="bars" id="containerHoldingBarsID">
         <div class="bar" id="bar1ID">
@@ -18,6 +21,8 @@
           <input type="number" id="endYear1">
           <label for="chosenColor1">What color would you like the bar to be?</label>
           <input type="text" id="chosenColor1">
+          <label for="textInput1" class="inputTextLabel" id ="inputTextLabel1">What text do you want inside the bar?</label>
+          <input type="text"  class="inputText" id="textInput1">
           <button class="addBtn" id="addBtnID1">Add to canvas</button>
         </div>
       </div>
@@ -29,15 +34,26 @@
       <div class="yearsToPixelsOption">
         <p>Pixels per year:</p>
         <label for="10">10</label>
-        <input type="radio" name="pixels" id="10" value="10"><br><br><br>
+        <input type="radio" name="pixels" id="10" value="10"><br><br>
         <label for="20">20</label>
-        <input type="radio" name="pixels" id="20" value="20"><br><br><br>
+        <input type="radio" name="pixels" id="20" value="20"><br><br>
         <label for="40">40</label>
-        <input type="radio" name="pixels" id="40" value="40"><br><br><br>
+        <input type="radio" name="pixels" id="40" value="40"><br><br>
         <label for="50">80</label>
-        <input type="radio" name="pixels" id="80" value="80"><br><br><br>
+        <input type="radio" name="pixels" id="80" value="80"><br><br>
       </div>
+
+    <div class="blocksOrTextOption">
+      <p>Normal block or text in blocks?</p>
+        <label for="textInBlocks">with text</label>
+        <input type="radio" name="blocks" id="textInBlocks" value="true"><br><br>
+        <label for="noTextInBlocks">Just blocks</label>
+        <input type="radio" name="blocks" id="noTextInBlocks" value="false"><br><br>
+       </div>
+
       <button class="createBtn" id="createCanvasBtnID">Create canvas</button></div>
+
+
 
     <div class="loadingContainer" id="loadingContainerID"><p class="loadingText" id="loadingTextID">Loading...</p>
       <div class="loadingBar1" id="">

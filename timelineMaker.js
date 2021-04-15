@@ -4,6 +4,8 @@ let lengthOfTheCanvas = [];
 let chosenColorArray = [];
 let endYearsArray = [];
 let pixelsPerYear = 10;
+let textInputArray = [];
+let textInBlocks = false;
 const _containerHoldingBars = document.getElementById('containerHoldingBarsID');
 
 document.getElementById('addBtnID1').addEventListener('click', function(){
@@ -11,11 +13,13 @@ document.getElementById('addBtnID1').addEventListener('click', function(){
     let bar1Color = document.getElementById('chosenColor1');
     let barInputEnd1 = document.getElementById('endYear1');
     let barInputStart1 = document.getElementById('startYear1'); 
+    let textinBar1 = document.getElementById('textInput1')
     let yearsInsideBar1 = barInputEnd1.value - barInputStart1.value;
     lengthOfTheCanvas.push(yearsInsideBar1);
     barArray.push(newBar1);
     chosenColorArray.push(bar1Color.value);
     endYearsArray.push(barInputEnd1 .value);
+    textInputArray.push(textinBar1.value);
     newBar1.style.display =  "none";
 })
 
@@ -27,22 +31,29 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
     let newBarInputEndLabel = document.createElement("label");
     let newBarInputEnd = document.createElement("input");
     let newBarInputColorLabel = document.createElement("label");
+    let newBarInputTextLabel = document.createElement("label");
     let newBarInputColor = document.createElement("input");
+    let newBarInputText = document.createElement("input");
     let newBarInputBtn = document.createElement("button");
     newBar.classList.add("bar");
     newBarInputStart.classList.add("inputYear");
     newBarInputEnd.classList.add("inputYear");
-    newBarInputColor.classList.add("inputColor");
+    newBarInputColor.classList.add("inputColor")
+    newBarInputTextLabel.classList.add("inputTextLabel");
+    newBarInputText.classList.add("inputText");
     newBarInputBtn.classList.add("inputBtn");
     newBarInputStart.setAttribute('type', 'number');
     newBarInputEnd.setAttribute('type', 'number');
+    newBarInputText.setAttribute('type', 'text');
     newBarInputColor.setAttribute('type', 'text');
     newBarInputStartLabel.innerHTML = "What is the starting year of this period?";
     newBarInputEndLabel.innerHTML = "What is the ending year of this period?";
     newBarInputColorLabel.innerHTML = "What color would you like the bar to be?";
+    newBarInputTextLabel.innerHTML = "What text do you want inside the bar?";
     newBarInputBtn.innerHTML = "Add to canvas";
     newBar.setAttribute('ID', `'bar${barCounter}'`);
     newBarInputStart.setAttribute('ID', `startYear${barCounter}`);
+    newBarInputText.setAttribute('ID', `textInput${barCounter}`);
     newBarInputEnd.setAttribute('ID', `endYear${barCounter}`);
     newBarInputColor.setAttribute('ID', `chosenColor${barCounter}`);
     newBarInputBtn.setAttribute('ID', `addBtnID${barCounter}`);
@@ -53,10 +64,12 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
         let yearsInsideBar = newBarInputEnd.value - newBarInputStart.value;
         lengthOfTheCanvas.push(yearsInsideBar);
         endYearsArray.push(newBarInputEnd.value);
+        textInputArray.push(newBarInputText.value);
         newBar.style.display =  "none";
 
     })
     newBarInputStartLabel.setAttribute('for', `barInputStart${barCounter}`);
+    newBarInputTextLabel.setAttribute('for', `textInput${barCounter}`);
     newBarInputEndLabel.setAttribute('for', `barInputEnd${barCounter}`);
     newBarInputColorLabel.setAttribute('for', `chosenColor${barCounter}`);
     newBar.appendChild(newBarInputStartLabel);
@@ -65,6 +78,8 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
     newBar.appendChild(newBarInputEnd);
     newBar.appendChild(newBarInputColorLabel);
     newBar.appendChild(newBarInputColor);
+    newBar.appendChild(newBarInputTextLabel);
+    newBar.appendChild(newBarInputText);
     newBar.appendChild(newBarInputBtn);
     _containerHoldingBars.appendChild(newBar);
 })
@@ -86,11 +101,34 @@ document.getElementById('80').addEventListener('click', function(){
     console.log(pixelsPerYear);
 });
 
+document.getElementById('textInBlocks').addEventListener('click', function(){
+    textInBlocks = true;
+    let labelArray = document.getElementsByClassName('inputTextLabel');
+    let textArray = document.getElementsByClassName('inputText');
+    for(let i = 0; i < textArray.length; i++){
+        labelArray[i].style.display = "flex";
+        textArray[i].style.display = "flex";
+    }
+})
+
+document.getElementById('noTextInBlocks').addEventListener('click', function(){
+    textInBlocks = false;
+    let labelArray = document.getElementsByClassName('inputTextLabel');
+    let textArray = document.getElementsByClassName('inputText');
+    for(let i = 0; i < textArray.length; i++){
+        labelArray[i].style.display = "none";
+        textArray[i].style.display = "none";
+    }
+})
+
 document.getElementById('createCanvasBtnID').addEventListener('click', function(){
     let barContainer = document.getElementById('bigBarContainerID');
+    let titleContainer = document.getElementById('titleContainerID');
+    titleContainer.style.animation = "dissappear 2s 1";
     barContainer.style.animation = "dissappear 2s 1";
     barContainer.onanimationend = function (){
         barContainer.style.display = "none";
+        titleContainer.style.display = "none";
     }
     let buttonContainer = document.getElementById('btnAndOptionsContainer');
     let loadingContainer = document.getElementById('loadingContainerID');
@@ -128,17 +166,23 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
     }
     canvas.width = `${40 + (sum * pixelsPerYear)}`; 
 
-    ctx.fillStyle = "black;";
+    ctx.fillStyle = "black";
     ctx.font = "20px serif";
     ctx.strokeText(`${document.getElementById('startYear1').value}`, 10, 25);
 
     console.log(document.getElementById('startYear1').value);
+    console.log(textInputArray);
     let  sum2 = 0;
     for(let i = 0; i < barArray.length; i++){
         ctx.fillStyle = `${chosenColorArray[i]}`;
         ctx.fillRect(`${20 + (sum2 * pixelsPerYear)}`, 50, `${lengthOfTheCanvas[i] * pixelsPerYear}`, 50);
+        if(textInBlocks == true){
+            ctx.font = "20px serif";
+            ctx.fillStyle = "black";
+            ctx.strokeText(`${textInputArray[i]}`,`${20 + (sum2 * pixelsPerYear)}` , 75, `${lengthOfTheCanvas[i] * pixelsPerYear}`);
+        }
         sum2 += lengthOfTheCanvas[i];
-        ctx.fillStyle = "black;";
+        ctx.fillStyle = "black";
         ctx.font = "20px serif";
         ctx.strokeText(`${endYearsArray[i]}`, `${(sum2 * pixelsPerYear)- 10}`, 25);    
 
