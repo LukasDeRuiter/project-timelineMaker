@@ -6,13 +6,13 @@
   align-items: center;
   justify-content: center;
     position: absolute;
-    top: 5%;
+    top: 2%;
     left: 50%;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 20, 20, 50, rgba(255, 255, 255, 0.5);
     width: 900px;
     margin-left: -450px;
-    height: 50px;
+    height: 7vh;
     z-index: -2;
     border-radius: 10px;
   }
@@ -32,12 +32,12 @@
     box-shadow: 20, 20, 50, rgba(255, 255, 255, 0.5);
     width: 900px;
     margin-left: -450px;
-    height: 500px;
+    height: 45vh;
     overflow-X: scroll;
     z-index: -2;
     border-radius: 10px;
   }
-
+  
   .bars{
     display: flex;
     flex-direction: row;
@@ -128,18 +128,19 @@
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(5, 1fr);
       position: absolute;
-      top: 65%;
+      top: 57%;
       left: 50%;
       background-color: rgba(255, 255, 255, 0.1);
       box-shadow: 20, 20, 50, rgba(255, 255, 255, 0.5);
-      width: 700px;
-      margin-left: -350px;
-      height: 300px;
+      width: 900px;
+      margin-left: -450px;
+      height: 40vh;
       border-radius: 10px;
     }
 
     .yearsToPixelsOption{
-      background-color: white;
+      background-color: rgba(144, 14, 231, 0.15);
+      border: 2px solid rgb(144, 14, 231);
       grid-row-start: 2;
       grid-row-end: 6;
       grid-column-start: 1;
