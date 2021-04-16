@@ -1,5 +1,5 @@
 :root{
-  background-color: black;
+  background: linear-gradient(to right, rgb(0,0,0) 50%, rgb(82, 4, 146) 80%);
 }
 .titleContainer{
   display: flex;
@@ -145,14 +145,29 @@
       grid-row-end: 6;
       grid-column-start: 1;
       grid-column-end: 2;
+      transition: 0.5s;
+    }
+    .yearsToPixelsOption:hover{
+      background-color: rgba(144, 14, 231, 0.8);
+      box-shadow: 0 0 10px rgb(144, 14, 231), 0 0 30px rgb(144, 14, 231);
     }
 
     .blocksOrTextOption{
-      background-color: white;
+      background-color: rgba(14, 231, 14, 0.15);
+      border: 2px solid rgb(14, 231, 14);
       grid-row-start: 2;
       grid-row-end: 6;
       grid-column-start: 2;
       grid-column-end: 3;
+      transition: 0.5s;
+    }
+    .blocksOrTextOption:hover{
+      background-color: rgba(14, 231, 14, 0.8);
+      box-shadow: 0 0 10px rgb(14, 231, 14), 0 0 30px rgb(14, 231, 14);
+    }
+
+    .optionsText{
+      color: white;
     }
 
     .createBtn{
