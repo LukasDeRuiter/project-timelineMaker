@@ -1,13 +1,15 @@
-let barCounter = 1;
-let barArray = [];
-let lengthOfTheCanvas = [];
-let chosenColorArray = [];
-let endYearsArray = [];
-let pixelsPerYear = 10;
-let textInputArray = [];
-let textInBlocks = false;
+let barCounter = 1; // this int is used to determine how much bars should be made.
+let barArray = []; // here we store the bar objects
+let lengthOfTheCanvas = []; // here we store the total length of the timeline in years
+let chosenColorArray = []; // here we store the chosen colors
+let endYearsArray = []; // we use this to determine where to place the endyears seen in the timeline
+let pixelsPerYear = 10; // this int determines the length per year
+let textInputArray = []; // here we store the text per year
+let textInBlocks = false; // here we store the boolean that determines whether or not text should be in the bars
 const _containerHoldingBars = document.getElementById('containerHoldingBarsID');
 
+
+// as the first bar is already on the screen when the user starts the webpage, this evenhandler/function is made specially for the first bar
 document.getElementById('addBtnID1').addEventListener('click', function(){
     let newBar1 = document.getElementById('bar1ID');
     let bar1Color = document.getElementById('chosenColor1');
@@ -23,6 +25,7 @@ document.getElementById('addBtnID1').addEventListener('click', function(){
     newBar1.style.display =  "none";
 })
 
+// if the user clicks on the addbarBtn, here we create a new obj/elem for a new bar
 document.getElementById('newBarBtnID').addEventListener('click',function(){
     barCounter += 1;
     let newBar = document.createElement("div");
@@ -84,6 +87,7 @@ document.getElementById('newBarBtnID').addEventListener('click',function(){
     _containerHoldingBars.appendChild(newBar);
 })
 
+// here we allow the user to select how many pixel per year should be in the timeline
 document.getElementById('10').addEventListener('click', function(){
     pixelsPerYear = 10;
     console.log(pixelsPerYear);
@@ -101,6 +105,8 @@ document.getElementById('80').addEventListener('click', function(){
     console.log(pixelsPerYear);
 });
 
+
+// here we allow the user to choose between text or no text in the blocks
 document.getElementById('textInBlocks').addEventListener('click', function(){
     textInBlocks = true;
     let labelArray = document.getElementsByClassName('inputTextLabel');
@@ -121,6 +127,7 @@ document.getElementById('noTextInBlocks').addEventListener('click', function(){
     }
 })
 
+// here we start creating the canvas, the animations are there to smoothen the experience
 document.getElementById('createCanvasBtnID').addEventListener('click', function(){
     let barContainer = document.getElementById('bigBarContainerID');
     let titleContainer = document.getElementById('titleContainerID');
@@ -154,7 +161,6 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
                 }
             }
         }
-        
     }
 
     let canvas = document.getElementById('theTimelineCanvas');
@@ -169,9 +175,6 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
     ctx.fillStyle = "black";
     ctx.font = "20px serif";
     ctx.strokeText(`${document.getElementById('startYear1').value}`, 10, 25);
-
-    console.log(document.getElementById('startYear1').value);
-    console.log(textInputArray);
     let  sum2 = 0;
     for(let i = 0; i < barArray.length; i++){
         ctx.fillStyle = `${chosenColorArray[i]}`;
@@ -189,7 +192,3 @@ document.getElementById('createCanvasBtnID').addEventListener('click', function(
     }
 })
 
-/*
-`${lengthOfTheCanvas[i] * 10}`
-chosenColorArray[i]
-*/

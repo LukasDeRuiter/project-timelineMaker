@@ -1,6 +1,8 @@
 :root{
   background: linear-gradient(to right, rgb(0,0,0) 50%, rgb(82, 4, 146) 80%);
 }
+
+/* Title of the app  */
 .titleContainer{
   display: flex;
   align-items: center;
@@ -21,6 +23,7 @@
     text-align: center;
   }
 
+/* Container of the bars and the extra bar button  */
 .barsContainer{
   display: flex;
   flex-direction: row;
@@ -103,18 +106,7 @@
   
 }
 
-  .inputYear{
-
-  }
-
-  .inputColor{
-    
-  }
-
-  .inputBtn{
-
-  }
-
+/* These are switched on and off depending on the choice of the user  */
   .inputText{
     display: none;
   }
@@ -123,6 +115,8 @@
     display: none;
   }
  
+
+  /* Second container where the user has some options to customize the result  */
   .buttonContainer{
     display: grid;
     grid-template-rows: repeat(6, 1fr);
@@ -143,8 +137,8 @@
       border: 2px solid rgb(144, 14, 231);
       grid-row-start: 2;
       grid-row-end: 6;
-      grid-column-start: 1;
-      grid-column-end: 2;
+      grid-column-start: 2;
+      grid-column-end: 3;
       transition: 0.5s;
     }
     .yearsToPixelsOption:hover{
@@ -157,8 +151,8 @@
       border: 2px solid rgb(14, 231, 14);
       grid-row-start: 2;
       grid-row-end: 6;
-      grid-column-start: 2;
-      grid-column-end: 3;
+      grid-column-start: 4;
+      grid-column-end: 5;
       transition: 0.5s;
     }
     .blocksOrTextOption:hover{
@@ -177,6 +171,8 @@
       grid-column-end: 4;
     }
   
+
+    /* The result  */
   .canvasContainer{
     display: none;
     position: absolute;
@@ -190,6 +186,7 @@
   }
 
 
+  /* The animation playing between the startscreen and the result */
   .loadingContainer{
     display: none;
     flex-direction: column;
